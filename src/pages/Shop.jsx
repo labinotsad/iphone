@@ -1,5 +1,5 @@
 const Shop = () => {
-  return <section className='bg-black'></section>;
+  return <div>Shop Shop</div>;
 };
 
 export default Shop;
