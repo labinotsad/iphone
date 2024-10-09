@@ -30,12 +30,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className='w-full nav-height bg-black relative mt-14'>
+    <section className='w-full nav-height bg-black relative mt-[6rem]'>
       <div className='h-5/6 w-full flex-center flex-col'>
         <p id='hero' className='hero-title mb-6'>
-          iPhone 16 Pro
+          iPhone 16 Pro Max <br />
+          Hello, Apple Intelligence
         </p>
-        <div className='md:w-10/12 w-9/12'>
+        <div className='md:w-10/12 w-9/12 '>
           <video
             className='pointer-events-none'
             autoPlay
