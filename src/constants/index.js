@@ -37,6 +37,7 @@ import {
   MacBookAir13,
   MacBookAir15,
   MacBookPro14,
+  MacBookPro16,
 } from "../assets";
 export const benefits = [
   {
@@ -272,7 +273,7 @@ export const benefits1 = [
     text: "The ultimate powerhouse for professionals, featuring the M2 Max chip, a stunning Liquid Retina XDR display, and incredible battery life for demanding tasks like video editing and 3D rendering.",
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
-    imageUrl: MacBookPro14,
+    imageUrl: MacBookPro16,
   },
   {
     id: "22",
@@ -280,7 +281,7 @@ export const benefits1 = [
     text: "A perfect balance of power and portability, the MacBook Pro 14-inch offers impressive performance with the M2 Pro chip and a stunning high-resolution display for all your professional needs.",
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
-    imageUrl: MacBookPro14,
+    imageUrl: MacBookPro16,
   },
   {
     id: "23",
@@ -304,7 +305,7 @@ export const benefits1 = [
     text: "The most powerful MacBook, featuring the M2 Max chip, a stunning 16-inch Liquid Retina XDR display, and exceptional battery life for intensive tasks like video editing and 3D graphics.",
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
-    imageUrl: MacBookPro14,
+    imageUrl: MacBookPro16,
   },
   {
     id: "26",

@@ -52,11 +52,6 @@ import roadmap3 from "./roadmap/image-3.png";
 import roadmap4 from "./roadmap/image-4.png";
 import undone from "./roadmap/undone.svg";
 
-import notification1 from "./notification/image-1.png";
-import notification2 from "./notification/image-2.png";
-import notification3 from "./notification/image-3.png";
-import notification4 from "./notification/image-4.png";
-
 import benefitCard1 from "./benefits/card-1.svg";
 import benefitCard2 from "./benefits/card-2.svg";
 import benefitCard3 from "./benefits/card-3.svg";
@@ -67,7 +62,6 @@ import benefitIcon1 from "./benefits/icon-1.svg";
 import benefitIcon2 from "./benefits/icon-2.svg";
 import benefitIcon3 from "./benefits/icon-3.svg";
 import benefitIcon4 from "./benefits/icon-4.svg";
-import benefitImage2 from "./benefits/image-2.png";
 import iPhoneX from "./benefits/iPhoneX.webp";
 import iPhoneXs from "./benefits/iPhoneXs.webp";
 import iPhoneXsMax from "./benefits/iPhoneXsMax.webp";
@@ -77,21 +71,22 @@ import iPhone11ProMax from "./benefits/iPhone13ProMax.webp";
 import iPhone12 from "./benefits/iPhone12.webp";
 import iPhone12Pro from "./benefits/iPhone12Pro.webp";
 import iPhone12ProMax from "./benefits/iPhone12ProMax.webp";
-import iPhone13 from "./benefits/iPhone13.webp";
-import iPhone13Pro from "./benefits/iPhone13Pro.webp";
-import iPhone13ProMax from "./benefits/iPhone13ProMax.webp";
-import iPhone14 from "./benefits/iPhone14.webp";
-import iPhone14Pro from "./benefits/iPhone14Pro.webp";
+import iPhone13 from "./benefits/iPhone13.jpg";
+import iPhone13Pro from "./benefits/iPhone13Pro.jpg";
+import iPhone13ProMax from "./benefits/iPhone13ProMax.jpg";
+import iPhone14 from "./benefits/iPhone14.jpg";
+import iPhone14Pro from "./benefits/iPhone14Pro.jpg";
 import iPhone14ProMax from "./benefits/iPhone14ProMax.jpg";
 import iPhone16 from "./benefits/iPhone16.webp";
 import iPhone16Pro from "./benefits/iPhone16Pro.webp";
 import iPhone16ProMax from "./benefits/iPhone16ProMax.webp";
-import iPhone15 from "./benefits/iPhone15.webp";
-import iPhone15Pro from "./benefits/iPhone15Pro.webp";
-import iPhone15ProMax from "./benefits/iPhone15ProMax.webp";
-import MacBookAir13 from "./benefits/MacBookAir13.webp";
-import MacBookAir15 from "./benefits/MacBookAir15.webp";
-import MacBookPro14 from "./benefits/MacBookPro14.webp";
+import iPhone15 from "./benefits/iPhone15.jpg";
+import iPhone15Pro from "./benefits/iPhone15Pro.jpg";
+import iPhone15ProMax from "./benefits/iPhone15ProMax.jpg";
+import MacBookAir13 from "./benefits/MacBookAir13.jpg";
+import MacBookAir15 from "./benefits/MacBookAir15.jpg";
+import MacBookPro14 from "./benefits/MacBookPro14.jpg";
+import MacBookPro16 from "./benefits/MacBookPro16.jpg";
 import discordBlack from "./socials/discord.svg";
 import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
@@ -147,10 +142,6 @@ export {
   roadmap3,
   roadmap4,
   undone,
-  notification1,
-  notification2,
-  notification3,
-  notification4,
   benefitCard1,
   benefitCard2,
   benefitCard3,
@@ -161,7 +152,6 @@ export {
   benefitIcon2,
   benefitIcon3,
   benefitIcon4,
-  benefitImage2,
   iPhoneX,
   iPhoneXs,
   iPhoneXsMax,
@@ -186,6 +176,7 @@ export {
   MacBookAir13,
   MacBookAir15,
   MacBookPro14,
+  MacBookPro16,
   discordBlack,
   facebook,
   instagram,
