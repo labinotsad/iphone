@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { benefits1 } from "../constants";
+import { CartContext } from "../context/CartContext"; // Adjust the import path as necessary
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
@@ -9,6 +10,7 @@ import { Link } from "react-router-dom";
 
 const Benefits1 = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const { addToCart } = useContext(CartContext); // Access the CartContext
 
   const filteredBenefits = benefits1.filter(
     (item) =>
@@ -70,7 +72,10 @@ const Benefits1 = () => {
                     alt={item.title}
                   />
 
-                  <button className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider'>
+                  <button
+                    className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
+                    onClick={() => addToCart(item)}
+                  >
                     Add to Cart
                   </button>
                   <Arrow />
