@@ -68,14 +68,30 @@ import benefitIcon2 from "./benefits/icon-2.svg";
 import benefitIcon3 from "./benefits/icon-3.svg";
 import benefitIcon4 from "./benefits/icon-4.svg";
 import benefitImage2 from "./benefits/image-2.png";
+import iPhoneX from "./benefits/iPhoneX.webp";
+import iPhoneXs from "./benefits/iPhoneXs.webp";
+import iPhoneXsMax from "./benefits/iPhoneXsMax.webp";
+import iPhone11 from "./benefits/iPhone13.webp";
+import iPhone11Pro from "./benefits/iPhone13Pro.webp";
+import iPhone11ProMax from "./benefits/iPhone13ProMax.webp";
+import iPhone12 from "./benefits/iPhone12.webp";
+import iPhone12Pro from "./benefits/iPhone12Pro.webp";
+import iPhone12ProMax from "./benefits/iPhone12ProMax.webp";
+import iPhone13 from "./benefits/iPhone13.webp";
+import iPhone13Pro from "./benefits/iPhone13Pro.webp";
+import iPhone13ProMax from "./benefits/iPhone13ProMax.webp";
 import iPhone14 from "./benefits/iPhone14.webp";
 import iPhone14Pro from "./benefits/iPhone14Pro.webp";
+import iPhone14ProMax from "./benefits/iPhone14ProMax.jpg";
 import iPhone16 from "./benefits/iPhone16.webp";
 import iPhone16Pro from "./benefits/iPhone16Pro.webp";
-import iPhone16ProMax from "./benefits/iPhone15ProMax.webp";
+import iPhone16ProMax from "./benefits/iPhone16ProMax.webp";
 import iPhone15 from "./benefits/iPhone15.webp";
 import iPhone15Pro from "./benefits/iPhone15Pro.webp";
 import iPhone15ProMax from "./benefits/iPhone15ProMax.webp";
+import MacBookAir13 from "./benefits/MacBookAir13.webp";
+import MacBookAir15 from "./benefits/MacBookAir15.webp";
+import MacBookPro14 from "./benefits/MacBookPro14.webp";
 import discordBlack from "./socials/discord.svg";
 import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
@@ -146,14 +162,30 @@ export {
   benefitIcon3,
   benefitIcon4,
   benefitImage2,
+  iPhoneX,
+  iPhoneXs,
+  iPhoneXsMax,
+  iPhone11,
+  iPhone11Pro,
+  iPhone11ProMax,
+  iPhone12,
+  iPhone12Pro,
+  iPhone12ProMax,
+  iPhone13,
+  iPhone13Pro,
+  iPhone13ProMax,
   iPhone14,
   iPhone14Pro,
+  iPhone14ProMax,
   iPhone16,
   iPhone16Pro,
   iPhone16ProMax,
   iPhone15,
   iPhone15Pro,
   iPhone15ProMax,
+  MacBookAir13,
+  MacBookAir15,
+  MacBookPro14,
   discordBlack,
   facebook,
   instagram,
