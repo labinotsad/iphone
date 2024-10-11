@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext"; // Make sure this path is correct
+import { CartContext } from "../context/CartContext"; // Correct path
 
-import ClipPath from "../assets/svg/ClipPath"; // Ensure this is the correct path
+import ClipPath from "../assets/svg/ClipPath"; // Ensure this is correct
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext); // Destructure your context
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useContext(CartContext); // Destructure your context
 
   return (
     <section id='cart'>
@@ -18,52 +19,56 @@ const Cart = () => {
             cartItems.map((item) => (
               <div
                 className='grid grid-cols-2 relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[1200px] '
-                style={{ backgroundImage: `url(${item.backgroundUrl} )` }} // Ensure item has a backgroundUrl
+                style={{ backgroundImage: `url(${item.backgroundUrl} )` }}
                 key={item.id}
               >
                 <div>
                   <img
-                    className=' rounded-3xl'
+                    className='rounded-3xl'
                     src={item.image}
                     alt=''
-                    width={300}
+                    width={320}
                   />
                 </div>
                 <div className='relative z-2 flex flex-col min-h-[22rem] p-[2.4rem] pointer-events-none'>
-                  <h5 className='h5 mb-5 '>{item.title}</h5>
-                  <p className=' body-2 mb-6 text-n-3'>{item.overview}</p>
-                  <p className='font-bold text-lg'>{item.price}</p>
+                  <h5 className='h5 mb-2'>{item.title}</h5>
+                  <p className=' body-2 mb-4 text-n-3'>{item.overview}</p>
+                  <p className='font-bold text-lg'>
+                    €{item.price * item.quantity}
+                    {/* This multiplies the price by the quantity */}
+                  </p>
 
-                  <div className='flex items-center mt-auto'>
+                  <div className='flex items-center mt-[1rem]'>
+                    {/* Quantity Controls */}
+                    <div className='flex items-center'>
+                      <button
+                        className='mr-2 p-2 pointer-events-auto '
+                        onClick={() => decreaseQuantity(item.id)}
+                      >
+                        -
+                      </button>
+                      <span className='px-4'>{item.quantity}</span>
+                      <button
+                        className='ml-2 p-2 pointer-events-auto '
+                        onClick={() => increaseQuantity(item.id)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div className='flex justify-between mt-8 '>
+                    {" "}
                     <button
-                      onClick={() => {
-                        removeFromCart(item.id); // Call to remove item from cart
-                      }}
+                      onClick={() => removeFromCart(item.id)}
                       className='mr-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
                     >
                       Remove from Cart
                     </button>
-                    {/* <Arrow /> */}
                     <button className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'>
                       Buy it{" "}
                     </button>
                   </div>
                 </div>
-
-                {/* <div
-                  className='absolute inset-0 opacity-0 transition-opacity hover:opacity-60'
-                  style={{ clipPath: "url(#benefits)" }}
-                >
-                  {item.imageUrl && (
-                    <img
-                      src={item.imageUrl}
-                      width={380}
-                      height={362}
-                      alt={item.title}
-                      className='w-full object-cover'
-                    />
-                  )}
-                </div> */}
 
                 <ClipPath />
               </div>

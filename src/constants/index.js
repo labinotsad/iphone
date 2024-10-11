@@ -116,7 +116,7 @@ export const benefits1 = [
     iconUrl: benefitIcon2,
     imageUrl: iPhone16Pro,
     light: true,
-    price: "€1200.00",
+    price: "1200.00",
     image:
       "https://m.media-amazon.com/images/I/619GbzAAOhL._AC_UY327_FMwebp_QL65_.jpg",
   },
