@@ -102,7 +102,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: iPhone16,
-    price: "€949.00",
+    price: "949.00",
     image:
       "https://m.media-amazon.com/images/I/619HAuZ95QL._AC_UY327_FMwebp_QL65_.jpg",
   },
@@ -130,7 +130,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-6.svg",
     iconUrl: benefitIcon2,
     imageUrl: iPhone16ProMax,
-    price: "€1600.00",
+    price: " 1600.00",
     image:
       "https://m.media-amazon.com/images/I/81fYvFvX-8L._AC_UY327_FMwebp_QL65_.jpg",
   },
@@ -143,7 +143,7 @@ export const benefits1 = [
     iconUrl: benefitIcon4,
     imageUrl: iPhone15,
     light: true,
-    price: "€706.00",
+    price: " 706.00",
     image:
       "https://m.media-amazon.com/images/I/61eEYLATF9L._AC_UY327_FMwebp_QL65_.jpg",
   },
@@ -155,7 +155,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-5.svg",
     iconUrl: benefitIcon1,
     imageUrl: iPhone15Pro,
-    price: "€806.00",
+    price: " 806.00",
     image:
       "https://m.media-amazon.com/images/I/812oGW3LDdL._AC_UY327_FMwebp_QL65_.jpg",
   },
@@ -167,7 +167,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: iPhone15ProMax,
-    price: "€1253.00",
+    price: " 1253.00",
     image:
       "https://m.media-amazon.com/images/I/81izs2I2UvL._AC_UY327_FMwebp_QL65_.jpg",
   },
@@ -181,7 +181,7 @@ export const benefits1 = [
     imageUrl: iPhone14,
     image:
       "https://m.media-amazon.com/images/I/61cwywLZR-L._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€611.00",
+    price: " 611.00",
   },
   {
     id: "7",
@@ -193,7 +193,7 @@ export const benefits1 = [
     imageUrl: iPhone14Pro,
     image:
       "https://m.media-amazon.com/images/I/61yGtzZUR6L._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€711.00",
+    price: " 711.00",
   },
   {
     id: "8",
@@ -205,7 +205,7 @@ export const benefits1 = [
     imageUrl: iPhone14ProMax,
     image:
       "https://m.media-amazon.com/images/I/71yzJoE7WlL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€859.00",
+    price: " 859.00",
   },
   {
     id: "9",
@@ -217,7 +217,7 @@ export const benefits1 = [
     imageUrl: iPhone13,
     image:
       "https://m.media-amazon.com/images/I/61uFiw5hISL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€581.00",
+    price: " 581.00",
   },
   {
     id: "10",
@@ -229,7 +229,7 @@ export const benefits1 = [
     imageUrl: iPhone13Pro,
     image:
       "https://m.media-amazon.com/images/I/41Hv5Z53ptL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€594.00",
+    price: " 594.00",
   },
   {
     id: "11",
@@ -241,7 +241,7 @@ export const benefits1 = [
     imageUrl: iPhone13ProMax,
     image:
       "https://m.media-amazon.com/images/I/615csgQKj5L._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€711.00",
+    price: " 711.00",
   },
   {
     id: "12",
@@ -253,7 +253,7 @@ export const benefits1 = [
     imageUrl: iPhone12,
     image:
       "https://m.media-amazon.com/images/I/61zWB4MgKlL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€311.00",
+    price: " 311.00",
   },
   {
     id: "13",
@@ -265,7 +265,7 @@ export const benefits1 = [
     imageUrl: iPhone12Pro,
     image:
       "https://m.media-amazon.com/images/I/61EcSs8GyvL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€411.00",
+    price: " 411.00",
   },
   {
     id: "14",
@@ -277,7 +277,7 @@ export const benefits1 = [
     imageUrl: iPhone12ProMax,
     image:
       "https://m.media-amazon.com/images/I/71XXJC7V8tL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€511.00",
+    price: " 511.00",
   },
   {
     id: "15",
@@ -288,7 +288,7 @@ export const benefits1 = [
     imageUrl: iPhone11,
     image:
       "https://m.media-amazon.com/images/I/41ldOwv3VaL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€258.00",
+    price: " 258.00",
   },
   {
     id: "16",
@@ -300,7 +300,7 @@ export const benefits1 = [
     imageUrl: iPhone11Pro,
     image:
       "https://m.media-amazon.com/images/I/71EQjoupEEL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€390.00",
+    price: " 390.00",
   },
   {
     id: "17",
@@ -312,7 +312,7 @@ export const benefits1 = [
     imageUrl: iPhone11ProMax,
     image:
       "https://m.media-amazon.com/images/I/81nxsVyBAlL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€382.00",
+    price: " 382.00",
   },
   {
     id: "18",
@@ -324,7 +324,7 @@ export const benefits1 = [
     imageUrl: iPhoneX,
     image:
       "https://m.media-amazon.com/images/I/51IqCbXa97L._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€217.00",
+    price: " 217.00",
   },
   {
     id: "19",
@@ -336,7 +336,7 @@ export const benefits1 = [
     imageUrl: iPhoneXs,
     image:
       "https://m.media-amazon.com/images/I/512F7mwDVyL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€237.00",
+    price: " 237.00",
   },
   {
     id: "20",
@@ -348,7 +348,7 @@ export const benefits1 = [
     imageUrl: iPhoneXsMax,
     image:
       "https://m.media-amazon.com/images/I/61UojnxVbPL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€280.00",
+    price: " 280.00",
   },
   {
     id: "21",
@@ -361,7 +361,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€2,550.00",
+    price: "2,550.00",
   },
   {
     id: "22",
@@ -374,7 +374,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€2,150.00",
+    price: "2,150.00",
   },
   {
     id: "23",
@@ -387,7 +387,7 @@ export const benefits1 = [
     imageUrl: MacBookAir15,
     image:
       "https://m.media-amazon.com/images/I/71O14N5GYLL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€1,350.00",
+    price: "1,350.00",
   },
   {
     id: "24",
@@ -400,7 +400,7 @@ export const benefits1 = [
     imageUrl: MacBookAir13,
     image:
       "https://m.media-amazon.com/images/I/71uJwr1IrZL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€999.00",
+    price: "999.00",
   },
   {
     id: "25",
@@ -413,7 +413,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€2,550.00",
+    price: "2,550.00",
   },
   {
     id: "26",
@@ -426,7 +426,7 @@ export const benefits1 = [
     imageUrl: MacBookPro14,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "€2,550.00",
+    price: "2,550.00",
   },
 ];
 export const navLists = ["Home", "Shop", "Cart", "Dashboard"];
