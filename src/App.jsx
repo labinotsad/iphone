@@ -6,16 +6,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
-import { CartProvider } from "./context/CartContext"; // Import CartProvider
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <CartProvider>
-      {" "}
-      {/* Wrap Routes with CartProvider */}
       <BrowserRouter>
         <Header className='bg-black' />
-
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/shop' element={<Shop />} />

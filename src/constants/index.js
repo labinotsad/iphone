@@ -130,7 +130,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-6.svg",
     iconUrl: benefitIcon2,
     imageUrl: iPhone16ProMax,
-    price: " 1600.00",
+    price: " 1853.00",
     image:
       "https://m.media-amazon.com/images/I/81fYvFvX-8L._AC_UY327_FMwebp_QL65_.jpg",
   },
