@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { appleImg } from "../utils";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext"; // Import CartContext
 
 const Nav = () => {
+  const { cartItems } = useContext(CartContext); // Get cartItems from context
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
-  const [cart, setCart] = useLocalStorage("cart", []);
   const [user, setUser] = useLocalStorage("user", "");
   const navigator = useNavigate();
+
   const handleSignOut = (e) => {
     setIsLoggedIn(false);
     setUser("");
@@ -26,7 +29,8 @@ const Nav = () => {
               <Link to='/shop'>Shop</Link>
             </li>
             <li>
-              <Link to='/cart'>Cart ({cart.length})</Link>
+              <Link to='/cart'>Cart ({cartItems.length})</Link>{" "}
+              {/* Use cartItems from context */}
             </li>
             {isLoggedIn ? (
               <>
@@ -35,7 +39,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <a href='#' onClick={handleSignOut}>
-                    <i className='fa-solid fa-right-from-bracket text-white'></i>
+                    <p className=' text-white'>Sign Out</p>
                   </a>
                 </li>
               </>
