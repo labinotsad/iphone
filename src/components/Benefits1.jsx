@@ -17,16 +17,26 @@ const Benefits1 = () => {
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.text.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   useGSAP(() => {
     gsap.to("#hero", {
       opacity: 1,
       delay: 2,
-      y: -30,
+      y: -50,
       ease: "power1",
       scale: 1,
     });
   }, []);
+
+  const handleAddToCart = (item) => {
+    const isLoggedIn = localStorage.getItem("isloggedin"); // Check if user is logged in
+
+    if (!isLoggedIn) {
+      alert("You need to login first."); // Alert if not logged in
+    } else {
+      addToCart(item); // Add item to the cart
+      alert(`${item.title} has been added to your cart.`); // Alert confirming addition
+    }
+  };
 
   return (
     <section id='features'>
@@ -74,7 +84,7 @@ const Benefits1 = () => {
 
                   <button
                     className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
-                    onClick={() => addToCart(item)}
+                    onClick={() => handleAddToCart(item)} // Call the new function
                   >
                     Add to Cart
                   </button>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { appleImg } from "../utils";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext"; // Import CartContext
 
 const Nav = () => {
@@ -10,10 +10,22 @@ const Nav = () => {
   const [user, setUser] = useLocalStorage("user", "");
   const navigator = useNavigate();
 
-  const handleSignOut = (e) => {
+  // State for managing alert visibility
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleSignOut = () => {
+    setShowAlert(true); // Show the confirmation alert
+  };
+
+  const confirmSignOut = () => {
     setIsLoggedIn(false);
     setUser("");
     navigator("/");
+    setShowAlert(false); // Hide the alert
+  };
+
+  const cancelSignOut = () => {
+    setShowAlert(false); // Hide the alert if canceled
   };
 
   return (
@@ -28,19 +40,19 @@ const Nav = () => {
             <li>
               <Link to='/shop'>Shop</Link>
             </li>
-            <li>
-              <Link to='/cart'>Cart ({cartItems.length})</Link>{" "}
-              {/* Use cartItems from context */}
-            </li>
+
             {isLoggedIn ? (
               <>
+                <li>
+                  <Link to='/cart'>Cart ({cartItems.length})</Link>
+                </li>
                 <li>
                   <Link to='/dashboard'>Dashboard</Link>
                 </li>
                 <li>
-                  <a href='#' onClick={handleSignOut}>
-                    <p className=' text-white'>Sign Out</p>
-                  </a>
+                  <button onClick={handleSignOut} className='text-white'>
+                    Sign Out
+                  </button>
                 </li>
               </>
             ) : (
@@ -56,6 +68,32 @@ const Nav = () => {
           </ul>
         </nav>
       </div>
+
+      {/* Custom Alert */}
+      {showAlert && (
+        <div className='fixed inset-0 flex justify-center items-center z-50'>
+          <div className='bg-black bg-opacity-50 absolute inset-0'></div>
+          <div className='bg-white text-center p-6 rounded-lg shadow-lg relative z-10'>
+            <p className='text-lg text-red-600'>
+              Are you sure you want to sign out?
+            </p>
+            <div className='mt-4'>
+              <button
+                onClick={confirmSignOut}
+                className='mr-2 px-4 py-2 bg-gray-300 text-black rounded'
+              >
+                Yes
+              </button>
+              <button
+                onClick={cancelSignOut}
+                className='px-4 py-2 bg-gray-300 text-black rounded'
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
