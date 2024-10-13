@@ -1,8 +1,21 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext"; // Adjust the import path
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
+  const [user, setUser] = useLocalStorage("user", []);
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
+  const [orders, setOrders] = useLocalStorage("orders", []);
+  const navigator = useNavigate();
+  const [myOrders, setMyOrders] = useState();
+
+  useEffect(() => {
+    if (!isLoggedIn) navigator("/login");
+
+    setMyOrders([...orders.filter((order) => order.user == user)]);
+  }, []);
   const { purchasedItems, addToCart, removeFromPurchasedItems } =
     useContext(CartContext); // Get purchased items and addToCart function
   const navigate = useNavigate(); // Initialize useNavigate
