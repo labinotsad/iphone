@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { benefits1 } from "../constants";
-import { CartContext } from "../context/CartContext"; // Adjust the import path as necessary
+import { CartContext } from "../context/CartContext";
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
@@ -10,13 +10,14 @@ import { Link } from "react-router-dom";
 
 const Benefits1 = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { addToCart } = useContext(CartContext); // Access the CartContext
+  const { addToCart } = useContext(CartContext);
 
   const filteredBenefits = benefits1.filter(
     (item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.text.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   useGSAP(() => {
     gsap.to("#hero", {
       opacity: 1,
@@ -27,31 +28,49 @@ const Benefits1 = () => {
     });
   }, []);
 
+  const [alert, setAlert] = useState({ show: false, message: "" });
+
   const handleAddToCart = (item) => {
-    const isLoggedIn = localStorage.getItem("isloggedin"); // Check if user is logged in
+    const isLoggedIn = localStorage.getItem("isloggedin");
 
     if (!isLoggedIn) {
-      alert("You need to login first."); // Alert if not logged in
+      showAlert("You need to login first.");
     } else {
-      addToCart(item); // Add item to the cart
-      alert(`${item.title} has been added to your cart.`); // Alert confirming addition
+      addToCart(item);
+      showAlert(`${item.title} has been added to your cart.`);
     }
+  };
+
+  const showAlert = (message) => {
+    setAlert({ show: true, message });
+
+    setTimeout(() => {
+      setAlert({ show: false, message: "" });
+    }, 2000);
   };
 
   return (
     <section id='features'>
       <div className='container relative z-2'>
+        <img src='../assets/benefits/hero-1.png' alt='' />
         <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
           Explore the full models.
         </h3>
+        {alert.show && (
+          <div className='fixed inset-0 flex justify-center items-center  z-50'>
+            <div className='bg-black bg-opacity-50 absolute inset-0'></div>
+            <div className='bg-white text-center p-6 rounded-lg shadow-lg relative z-10'>
+              <p className='text-lg text-green-600'>{alert.message}</p>
+            </div>
+          </div>
+        )}
 
-        {/* Input Kërkimi */}
         <input
           type='text'
           placeholder='Search for products...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className=' w-full max-w-md p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black mb-[4rem]'
+          className='w-full max-w-md p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black mb-[4rem]'
         />
         <Link
           to='/shop'
@@ -84,7 +103,7 @@ const Benefits1 = () => {
 
                   <button
                     className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
-                    onClick={() => handleAddToCart(item)} // Call the new function
+                    onClick={() => handleAddToCart(item)}
                   >
                     Add to Cart
                   </button>

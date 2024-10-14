@@ -93,7 +93,10 @@ import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
 
+import hero1 from "./benefits/hero-1.png";
+
 export {
+  hero1,
   brainwave,
   check,
   check2,

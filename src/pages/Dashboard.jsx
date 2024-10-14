@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../context/CartContext"; // Adjust the import path
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Dashboard = () => {
   const [user, setUser] = useLocalStorage("user", []);
@@ -9,9 +11,9 @@ const Dashboard = () => {
   const [orders, setOrders] = useLocalStorage("orders", []);
   const navigator = useNavigate();
   const [myOrders, setMyOrders] = useState();
-  const [alert, setAlert] = useState({ show: false, message: "" }); // Alert state
+  const [alert, setAlert] = useState({ show: false, message: "" });
   const { purchasedItems, addToCart, removeFromPurchasedItems } =
-    useContext(CartContext); // Get purchased items and addToCart function
+    useContext(CartContext);
 
   useEffect(() => {
     if (!isLoggedIn) navigator("/login");
@@ -20,31 +22,39 @@ const Dashboard = () => {
   }, [isLoggedIn, navigator, orders, user]);
 
   const handleBuyItAgain = (item) => {
-    addToCart(item); // Add item back to cart
+    addToCart(item);
     showAlert(`${item.title} added to cart successfully!`);
-    navigator("/cart"); // Navigate to cart page
+    navigator("/cart");
   };
 
   const handleRemoveItem = (item) => {
-    removeFromPurchasedItems(item.id); // Remove from purchased items
+    removeFromPurchasedItems(item.id);
     showAlert(`${item.title} removed from purchased items!`);
   };
 
   const showAlert = (message) => {
     setAlert({ show: true, message });
 
-    // Hide alert after 3 seconds
     setTimeout(() => {
       setAlert({ show: false, message: "" });
     }, 2000);
   };
-
+  useGSAP(() => {
+    gsap.to("#hero", {
+      opacity: 1,
+      delay: 2,
+      y: -50,
+      ease: "power1",
+      scale: 1,
+    });
+  }, []);
   return (
     <section id='dashboard'>
       <div className='container relative z-2'>
-        <h3 className='h3 mt-10 text-center mb-10'>Your Purchased Items</h3>
+        <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
+          Your Purchased Items
+        </h3>
 
-        {/* Alert */}
         {alert.show && (
           <div className='fixed inset-0 flex justify-center items-center z-50'>
             <div className='bg-black bg-opacity-50 absolute inset-0'></div>
@@ -82,13 +92,13 @@ const Dashboard = () => {
                   <div className='flex justify-between mt-8'>
                     <button
                       className='mr-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
-                      onClick={() => handleRemoveItem(item)} // Call to remove from purchased items
+                      onClick={() => handleRemoveItem(item)}
                     >
                       Remove it
                     </button>
                     <button
                       className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
-                      onClick={() => handleBuyItAgain(item)} // Call the buy it again function
+                      onClick={() => handleBuyItAgain(item)}
                     >
                       Buy it Again
                     </button>

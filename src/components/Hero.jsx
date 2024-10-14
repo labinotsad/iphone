@@ -30,7 +30,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className='w-full nav-height bg-black relative mt-[6rem]'>
+    <section className='w-full nav-height bg-black relative mt-[2rem] lg:mt-[6rem]'>
       <div className='h-5/6 w-full flex-center flex-col'>
         <p id='hero' className='hero-title mb-6'>
           iPhone 16 Pro Max <br />

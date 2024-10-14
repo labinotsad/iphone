@@ -1,6 +1,8 @@
-import { useContext, useState, useRef } from "react";
-import { CartContext } from "../context/CartContext"; // Correct path
-import ClipPath from "../assets/svg/ClipPath"; // Ensure this is correct
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
+import ClipPath from "../assets/svg/ClipPath";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Cart = () => {
   const {
@@ -8,8 +10,8 @@ const Cart = () => {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
-    buyIt, // Add buyIt function from context
-  } = useContext(CartContext); // Destructure your context
+    buyIt,
+  } = useContext(CartContext);
 
   // Alert state
   const [alert, setAlert] = useState({ show: false, message: "" });
@@ -20,25 +22,34 @@ const Cart = () => {
   };
 
   const handleBuyIt = (item) => {
-    buyIt(item.id); // Assuming buyIt handles item purchasing logic
+    buyIt(item.id);
     showAlert(`${item.title} purchased successfully!`);
   };
 
   const showAlert = (message) => {
     setAlert({ show: true, message });
 
-    // Hide alert after 3 seconds
     setTimeout(() => {
       setAlert({ show: false, message: "" });
     }, 2000);
   };
+  useGSAP(() => {
+    gsap.to("#hero", {
+      opacity: 1,
+      delay: 2,
+      y: -50,
+      ease: "power1",
+      scale: 1,
+    });
+  }, []);
 
   return (
     <section id='cart'>
       <div className='container relative z-2'>
-        <h3 className='h3 mt-10 text-center mb-10'>Your Shopping Cart</h3>
+        <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
+          Your Shopping Cart
+        </h3>
 
-        {/* Alert */}
         {alert.show && (
           <div className='fixed inset-0 flex justify-center items-center z-50'>
             <div className='bg-black bg-opacity-50 absolute inset-0'></div>
@@ -74,7 +85,6 @@ const Cart = () => {
                   </p>
 
                   <div className='flex items-center mt-[1rem]'>
-                    {/* Quantity Controls */}
                     <div className='flex items-center'>
                       <button
                         className='mr-2 p-2 pointer-events-auto'
@@ -93,13 +103,13 @@ const Cart = () => {
                   </div>
                   <div className='flex justify-between mt-8'>
                     <button
-                      onClick={() => handleRemoveFromCart(item)} // Updated to use handler
+                      onClick={() => handleRemoveFromCart(item)}
                       className='mr-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
                     >
                       Remove from Cart
                     </button>
                     <button
-                      onClick={() => handleBuyIt(item)} // Updated to use handler
+                      onClick={() => handleBuyIt(item)}
                       className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
                     >
                       Buy it

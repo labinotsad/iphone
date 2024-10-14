@@ -1,6 +1,5 @@
 import { createContext, useReducer } from "react";
 
-// Define action types
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const INCREASE_QUANTITY = "INCREASE_QUANTITY";
@@ -8,13 +7,11 @@ const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 const BUY_IT = "BUY_IT";
 const REMOVE_FROM_PURCHASED_ITEMS = "REMOVE_FROM_PURCHASED_ITEMS";
 
-// Initial state
 const initialState = {
   cartItems: [],
   purchasedItems: [],
 };
 
-// Reducer function
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
@@ -100,7 +97,6 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  // Define action dispatchers
   const addToCart = (item) => dispatch({ type: ADD_TO_CART, payload: item });
   const removeFromCart = (id) =>
     dispatch({ type: REMOVE_FROM_CART, payload: id });
