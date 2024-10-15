@@ -52,10 +52,6 @@ const Benefits1 = () => {
   return (
     <section id='features'>
       <div className='container relative z-2'>
-        <img src='../assets/benefits/hero-1.png' alt='' />
-        <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
-          Explore the full models.
-        </h3>
         {alert.show && (
           <div className='fixed inset-0 flex justify-center items-center  z-50'>
             <div className='bg-black bg-opacity-50 absolute inset-0'></div>
@@ -70,7 +66,7 @@ const Benefits1 = () => {
           placeholder='Search for products...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className='w-full max-w-md p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black mb-[4rem]'
+          className='w-full max-w-md p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black mb-[4rem] t'
         />
         <Link
           to='/shop'

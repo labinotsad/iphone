@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import ClipPath from "../assets/svg/ClipPath";
-import gsap from "gsap";
+import { animateWithGsap } from "../utils/animations";
+
 import { useGSAP } from "@gsap/react";
 
 const Cart = () => {
@@ -13,7 +14,6 @@ const Cart = () => {
     buyIt,
   } = useContext(CartContext);
 
-  // Alert state
   const [alert, setAlert] = useState({ show: false, message: "" });
 
   const handleRemoveFromCart = (item) => {
@@ -34,12 +34,11 @@ const Cart = () => {
     }, 2000);
   };
   useGSAP(() => {
-    gsap.to("#hero", {
+    animateWithGsap("#hero", {
+      y: 2,
       opacity: 1,
-      delay: 2,
-      y: -50,
-      ease: "power1",
-      scale: 1,
+      ease: "power2.inOut",
+      duration: 1,
     });
   }, []);
 

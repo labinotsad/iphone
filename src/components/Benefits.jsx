@@ -1,11 +1,15 @@
+import { useContext } from "react";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { benefits } from "../constants";
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
+import { CartContext } from "../context/CartContext";
 
 const Benefits = () => {
+  const { addToCart } = useContext(CartContext);
   useGSAP(() => {
     gsap.to("#hero", {
       opacity: 1,
@@ -40,8 +44,11 @@ const Benefits = () => {
                     height={48}
                     alt={item.title}
                   />
-                  <button className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider'>
-                    Explore more
+                  <button
+                    className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
+                    onClick={() => addToCart(item)}
+                  >
+                    Buy it
                   </button>
                   <Arrow />
                 </div>

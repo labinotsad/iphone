@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { animateWithGsap } from "../utils/animations";
 
 const Dashboard = () => {
   const [user, setUser] = useLocalStorage("user", []);
@@ -40,12 +40,11 @@ const Dashboard = () => {
     }, 2000);
   };
   useGSAP(() => {
-    gsap.to("#hero", {
+    animateWithGsap("#hero", {
+      y: 2,
       opacity: 1,
-      delay: 2,
-      y: -50,
-      ease: "power1",
-      scale: 1,
+      ease: "power2.inOut",
+      duration: 1,
     });
   }, []);
   return (
