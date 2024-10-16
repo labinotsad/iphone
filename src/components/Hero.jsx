@@ -1,24 +1,23 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { highlightSecondVideo, smallHeroVideo } from "../utils";
+import { highlightThirdVideo, smallHeroVideo } from "../utils";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth < 760 ? smallHeroVideo : highlightSecondVideo
+    window.innerWidth < 760 ? smallHeroVideo : highlightThirdVideo
   );
 
   const handleVideoSrcSet = () => {
     if (window.innerWidth < 760) {
       setVideoSrc(smallHeroVideo);
     } else {
-      setVideoSrc(highlightSecondVideo);
+      setVideoSrc(highlightThirdVideo);
     }
   };
 
   useEffect(() => {
     window.addEventListener("resize", handleVideoSrcSet);
-
     return () => {
       window.removeEventListener("resize", handleVideoSrcSet);
     };
@@ -31,7 +30,7 @@ const Hero = () => {
 
   return (
     <section className='w-full nav-height bg-black relative mt-[2rem] lg:mt-[6rem]'>
-      <div className='h-5/6 w-full flex-center flex-col'>
+      <div className='h-2/3 w-full flex-center flex-col'>
         <p id='hero' className='hero-title mb-6'>
           iPhone 16 Pro Max <br />
           Hello, Apple Intelligence
@@ -48,7 +47,6 @@ const Hero = () => {
           </video>
         </div>
       </div>
-
       <div
         id='cta'
         className='flex flex-col items-center opacity-0 translate-y-20'

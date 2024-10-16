@@ -41,7 +41,7 @@ const Dashboard = () => {
   };
   useGSAP(() => {
     animateWithGsap("#hero", {
-      y: 2,
+      y: -50,
       opacity: 1,
       ease: "power2.inOut",
       duration: 1,

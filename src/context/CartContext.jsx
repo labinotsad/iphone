@@ -14,7 +14,7 @@ const initialState = {
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART": {
+    case ADD_TO_CART: {
       const existingItem = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
@@ -34,13 +34,11 @@ const cartReducer = (state, action) => {
         };
       }
     }
-
     case REMOVE_FROM_CART:
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
-
     case INCREASE_QUANTITY:
       return {
         ...state,
@@ -50,7 +48,6 @@ const cartReducer = (state, action) => {
             : item
         ),
       };
-
     case DECREASE_QUANTITY:
       return {
         ...state,
@@ -62,23 +59,26 @@ const cartReducer = (state, action) => {
           )
           .filter((item) => item.quantity > 0),
       };
-
-    case "BUY_IT": {
+    case BUY_IT: {
       const itemToPurchase = state.cartItems.find(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload.id
       );
       if (itemToPurchase) {
+        // Combine the item with the order data
+        const purchaseData = {
+          ...itemToPurchase,
+          orderData: action.payload.orderData,
+        };
         return {
           ...state,
-          purchasedItems: [...state.purchasedItems, itemToPurchase],
+          purchasedItems: [...state.purchasedItems, purchaseData],
           cartItems: state.cartItems.filter(
-            (item) => item.id !== action.payload
+            (item) => item.id !== action.payload.id
           ),
         };
       }
       return state;
     }
-
     case REMOVE_FROM_PURCHASED_ITEMS:
       return {
         ...state,
@@ -86,7 +86,6 @@ const cartReducer = (state, action) => {
           (item) => item.id !== action.payload
         ),
       };
-
     default:
       return state;
   }
@@ -104,7 +103,11 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: INCREASE_QUANTITY, payload: id });
   const decreaseQuantity = (id) =>
     dispatch({ type: DECREASE_QUANTITY, payload: id });
-  const buyIt = (id) => dispatch({ type: BUY_IT, payload: id });
+
+  // Updated buyIt to accept order data
+  const buyIt = (id, orderData) =>
+    dispatch({ type: BUY_IT, payload: { id, orderData } });
+
   const removeFromPurchasedItems = (id) =>
     dispatch({ type: REMOVE_FROM_PURCHASED_ITEMS, payload: id });
 

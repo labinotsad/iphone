@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -19,9 +19,36 @@ const Benefits = () => {
       scale: 1,
     });
   }, []);
+  const [alert, setAlert] = useState({ show: false, message: "" });
+  const handleAddToCart = (item) => {
+    const isLoggedIn = localStorage.getItem("isloggedin");
+
+    if (!isLoggedIn) {
+      showAlert("You need to login first.");
+    } else {
+      addToCart(item);
+      showAlert(`${item.title} has been added to your cart.`);
+    }
+  };
+  const showAlert = (message) => {
+    setAlert({ show: true, message });
+
+    setTimeout(() => {
+      setAlert({ show: false, message: "" });
+    }, 2000);
+  };
+
   return (
     <section id='features'>
       <div className='container relative z-2'>
+        {alert.show && (
+          <div className='fixed inset-0 flex justify-center items-center  z-50'>
+            <div className='bg-black bg-opacity-50 absolute inset-0'></div>
+            <div className='bg-white text-center p-6 rounded-lg shadow-lg relative z-10'>
+              <p className='text-lg text-green-600'>{alert.message}</p>
+            </div>
+          </div>
+        )}
         <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
           Explore the full models.
         </h3>
@@ -46,7 +73,7 @@ const Benefits = () => {
                   />
                   <button
                     className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider pointer-events-auto'
-                    onClick={() => addToCart(item)}
+                    onClick={() => handleAddToCart(item)}
                   >
                     Buy it
                   </button>
