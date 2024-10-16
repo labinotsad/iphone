@@ -7,7 +7,7 @@ function Auth() {
   const [user, setUser] = useLocalStorage("user", []);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
   const [alert, setAlert] = useState({ show: false, message: "", type: "" });
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true); // To toggle between login and register
   const navigate = useNavigate();
 
   useEffect(() => {
