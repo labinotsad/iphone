@@ -10,22 +10,21 @@ const Nav = () => {
   const [user, setUser] = useLocalStorage("user", "");
   const navigator = useNavigate();
 
-  // State for managing alert visibility
   const [showAlert, setShowAlert] = useState(false);
 
   const handleSignOut = () => {
-    setShowAlert(true); // Show the confirmation alert
+    setShowAlert(true);
   };
 
   const confirmSignOut = () => {
     setIsLoggedIn(false);
     setUser("");
     navigator("/");
-    setShowAlert(false); // Hide the alert
+    setShowAlert(false);
   };
 
   const cancelSignOut = () => {
-    setShowAlert(false); // Hide the alert if canceled
+    setShowAlert(false);
   };
 
   return (
@@ -58,10 +57,7 @@ const Nav = () => {
             ) : (
               <>
                 <li>
-                  <Link to='/login'>Login</Link>
-                </li>
-                <li>
-                  <Link to='/register'>Register</Link>
+                  <Link to='/auth'>Login</Link>
                 </li>
               </>
             )}
