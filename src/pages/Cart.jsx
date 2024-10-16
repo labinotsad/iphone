@@ -183,7 +183,7 @@ const Cart = () => {
                     onChange={handleInputChange}
                     required
                     placeholder='Enter your name'
-                    className='w-full p-2 border border-gray-300 rounded'
+                    className='w-full p-2 border border-gray-300 rounded  text-black'
                   />
                 </div>
                 <div className='mb-4'>
@@ -198,7 +198,7 @@ const Cart = () => {
                     onChange={handleInputChange}
                     required
                     placeholder='Enter your email'
-                    className='w-full p-2 border border-gray-300 rounded'
+                    className='w-full p-2 border border-gray-300 rounded  text-black'
                   />
                 </div>
                 <div className='mb-4'>
@@ -213,7 +213,7 @@ const Cart = () => {
                     onChange={handleInputChange}
                     required
                     placeholder='Enter your street'
-                    className='w-full p-2 border border-gray-300 rounded'
+                    className='w-full p-2 border border-gray-300 rounded  text-black'
                   />
                 </div>
                 <div className='mb-4'>
@@ -246,7 +246,7 @@ const Cart = () => {
                 </div>
                 <button
                   type='submit'
-                  className='bg-blue-500 text-white p-2 rounded w-full'
+                  className='bg-blue-500 text-white border border-r-2 p-2 rounded w-full'
                 >
                   Submit Order
                 </button>

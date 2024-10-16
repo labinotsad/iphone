@@ -64,7 +64,6 @@ const cartReducer = (state, action) => {
         (item) => item.id === action.payload.id
       );
       if (itemToPurchase) {
-        // Combine the item with the order data
         const purchaseData = {
           ...itemToPurchase,
           orderData: action.payload.orderData,
@@ -96,18 +95,27 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const addToCart = (item) => dispatch({ type: ADD_TO_CART, payload: item });
+  const addToCart = (item) => {
+    // Check if the user is logged in
+    const isLoggedIn = localStorage.getItem("isloggedin");
+
+    // Add item to cart regardless of login status
+    dispatch({ type: ADD_TO_CART, payload: item });
+
+    // If not logged in, show alert
+    if (!isLoggedIn) {
+      alert("You need to log in to finalize your purchase.");
+    }
+  };
+
   const removeFromCart = (id) =>
     dispatch({ type: REMOVE_FROM_CART, payload: id });
   const increaseQuantity = (id) =>
     dispatch({ type: INCREASE_QUANTITY, payload: id });
   const decreaseQuantity = (id) =>
     dispatch({ type: DECREASE_QUANTITY, payload: id });
-
-  // Updated buyIt to accept order data
   const buyIt = (id, orderData) =>
     dispatch({ type: BUY_IT, payload: { id, orderData } });
-
   const removeFromPurchasedItems = (id) =>
     dispatch({ type: REMOVE_FROM_PURCHASED_ITEMS, payload: id });
 

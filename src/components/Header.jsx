@@ -28,7 +28,7 @@ const Nav = () => {
   };
 
   return (
-    <header className='h-24 flex items-center'>
+    <header className='sticky top-0 left-0 w-full h-24  shadow-md z-50 flex items-center'>
       <div className='container mx-auto flex items-center justify-between '>
         <img src={appleImg} alt='Apple' width={14} height={18} />
         <nav>

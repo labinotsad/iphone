@@ -6,9 +6,12 @@ import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
 import { CartContext } from "../context/CartContext";
+import { useLocalStorage } from "@uidotdev/usehooks"; // Import useLocalStorage
 
 const Benefits = () => {
   const { addToCart } = useContext(CartContext);
+  const [isLoggedIn] = useLocalStorage("isloggedin", false); // Check if logged in
+  const [alert, setAlert] = useState({ show: false, message: "" });
 
   useGSAP(() => {
     gsap.to("#hero", {
@@ -20,10 +23,7 @@ const Benefits = () => {
     });
   }, []);
 
-  const [alert, setAlert] = useState({ show: false, message: "" });
-
   const handleAddToCart = (item) => {
-    const isLoggedIn = localStorage.getItem("isloggedin");
     if (!isLoggedIn) {
       showAlert("You need to login first.");
     } else {
@@ -51,7 +51,7 @@ const Benefits = () => {
           </div>
         )}
         <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
-          Explore the full models.
+          Explore the models.
         </h3>
         <div className='flex flex-wrap gap-10 mb-10'>
           {benefits1.slice(0, 6).map((item) => (

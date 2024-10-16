@@ -11,7 +11,7 @@ function Auth() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) navigate("/dashboard");
+    if (isLoggedIn) navigate("/shop");
   }, [isLoggedIn, navigate]);
 
   const handleLogin = (e) => {
@@ -26,7 +26,7 @@ function Auth() {
       if (userExists.length) {
         setIsLoggedIn(true);
         setUser(email);
-        navigate("/dashboard");
+        navigate("/shop");
       } else {
         setAlert({
           show: true,
