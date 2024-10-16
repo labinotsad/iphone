@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import ClipPath from "../assets/svg/ClipPath";
 import { animateWithGsap } from "../utils/animations";
@@ -23,7 +23,7 @@ const Cart = () => {
     time: "",
     date: "",
   });
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -50,7 +50,7 @@ const Cart = () => {
 
   const handleBuyIt = (item) => {
     setSelectedItem(item);
-    setShowForm(true); // Show the form when 'Buy it' is clicked
+    setShowForm(true);
   };
 
   const handleInputChange = (e) => {
@@ -63,13 +63,11 @@ const Cart = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Combine the order data with the item to be purchased
     buyIt(selectedItem.id, formData);
-    // After processing, show alert and redirect to dashboard
     showAlert("Order placed successfully! Redirecting to dashboard...");
-    setShowForm(false); // Hide the form after submission
+    setShowForm(false);
     setTimeout(() => {
-      navigate("/dashboard"); // Redirect to dashboard after the alert
+      navigate("/dashboard");
     }, 2000);
   };
 
@@ -169,7 +167,7 @@ const Cart = () => {
           <div className='fixed inset-0 flex justify-center items-center z-50'>
             <div className='bg-black bg-opacity-75 absolute inset-0'></div>
             <div className='bg-gray-800 p-6 rounded-lg shadow-lg relative z-10 w-11/12 md:w-1/3 form-container'>
-              <h4 className='text-lg font-bold mb-4'>
+              <h4 className='text-lg font-bold mb-4 text-center'>
                 Order Details for {selectedItem.title}
               </h4>
               <form onSubmit={handleSubmit}>
