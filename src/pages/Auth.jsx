@@ -11,7 +11,7 @@ function Auth() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) navigate("/shop");
+    if (isLoggedIn) navigate("/dashboard");
   }, [isLoggedIn, navigate]);
 
   const handleLogin = (e) => {
@@ -26,7 +26,7 @@ function Auth() {
       if (userExists.length) {
         setIsLoggedIn(true);
         setUser(email);
-        navigate("/shop");
+        navigate("/dashboard");
       } else {
         setAlert({
           show: true,
@@ -71,7 +71,7 @@ function Auth() {
           type: "success",
           message: "Account created successfully.",
         });
-
+        // Navigate to login after 2 seconds
         setTimeout(() => {
           setIsLogin(true);
           setAlert({ show: false, type: "", message: "" });
@@ -86,6 +86,7 @@ function Auth() {
 
   return (
     <section className='min-h-screen flex justify-center items-center bg-black relative'>
+      {/* Alert Modal */}
       {alert.show && (
         <div className='fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50'>
           <div className='w-[400px] p-6 bg-white shadow-lg rounded-lg relative'>

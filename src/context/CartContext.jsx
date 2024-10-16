@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer } from "react";
 
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
@@ -6,20 +6,15 @@ const INCREASE_QUANTITY = "INCREASE_QUANTITY";
 const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 const BUY_IT = "BUY_IT";
 const REMOVE_FROM_PURCHASED_ITEMS = "REMOVE_FROM_PURCHASED_ITEMS";
-const SET_LOGGED_IN = "SET_LOGGED_IN";
 
 const initialState = {
   cartItems: [],
   purchasedItems: [],
-  isLoggedIn: false, // Add the logged-in state
 };
 
 const cartReducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      if (!state.isLoggedIn) {
-        return state; // If not logged in, don't allow adding to cart
-      }
       const existingItem = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
@@ -91,11 +86,6 @@ const cartReducer = (state, action) => {
           (item) => item.id !== action.payload
         ),
       };
-    case SET_LOGGED_IN:
-      return {
-        ...state,
-        isLoggedIn: action.payload,
-      };
     default:
       return state;
   }
@@ -113,17 +103,13 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: INCREASE_QUANTITY, payload: id });
   const decreaseQuantity = (id) =>
     dispatch({ type: DECREASE_QUANTITY, payload: id });
+
+  // Updated buyIt to accept order data
   const buyIt = (id, orderData) =>
     dispatch({ type: BUY_IT, payload: { id, orderData } });
+
   const removeFromPurchasedItems = (id) =>
     dispatch({ type: REMOVE_FROM_PURCHASED_ITEMS, payload: id });
-  const setLoggedIn = (status) =>
-    dispatch({ type: SET_LOGGED_IN, payload: status });
-
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isloggedin") === "true";
-    setLoggedIn(isLoggedIn);
-  }, []);
 
   return (
     <CartContext.Provider
@@ -136,8 +122,6 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         buyIt,
         removeFromPurchasedItems,
-        isLoggedIn: state.isLoggedIn,
-        setLoggedIn,
       }}
     >
       {children}
