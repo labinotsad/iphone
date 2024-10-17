@@ -96,13 +96,10 @@ export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const addToCart = (item) => {
-    // Check if the user is logged in
-    const isLoggedIn = localStorage.getItem("isloggedin");
-
-    // Add item to cart regardless of login status
     dispatch({ type: ADD_TO_CART, payload: item });
 
-    // If not logged in, show alert
+    // Check if the user is logged in when adding to cart
+    const isLoggedIn = localStorage.getItem("isloggedin");
     if (!isLoggedIn) {
       alert("You need to log in to finalize your purchase.");
     }

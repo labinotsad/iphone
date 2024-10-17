@@ -7,7 +7,7 @@ import { CartContext } from "../context/CartContext"; // Import CartContext
 const Nav = () => {
   const { cartItems } = useContext(CartContext); // Get cartItems from context
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
-  const [user, setUser] = useLocalStorage("user", "");
+  const [user, setUser] = useLocalStorage("user", ""); // Ensure this is a string
   const navigator = useNavigate();
 
   const [showAlert, setShowAlert] = useState(false);
@@ -18,8 +18,8 @@ const Nav = () => {
 
   const confirmSignOut = () => {
     setIsLoggedIn(false);
-    setUser("");
-    navigator("/");
+    setUser(""); // Clear the user string
+    navigator("/"); // Redirect to login (or home) page
     setShowAlert(false);
   };
 
@@ -28,8 +28,8 @@ const Nav = () => {
   };
 
   return (
-    <header className='sticky top-0 left-0 w-full h-24  shadow-md z-50 flex items-center'>
-      <div className='container mx-auto flex items-center justify-between '>
+    <header className=' w-full h-24 shadow-md flex items-center'>
+      <div className='container mx-auto flex items-center justify-between'>
         <img src={appleImg} alt='Apple' width={14} height={18} />
         <nav>
           <ul className='flex items-center gap-4'>

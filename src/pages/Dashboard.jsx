@@ -6,20 +6,28 @@ import { useGSAP } from "@gsap/react";
 import { animateWithGsap } from "../utils/animations";
 
 const Dashboard = () => {
-  const [user, setUser] = useLocalStorage("user", []);
-  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
-  const [orders, setOrders] = useLocalStorage("orders", []);
+  const [user] = useLocalStorage("user", null);
+  const [isLoggedIn] = useLocalStorage("isloggedin", false);
+  const [orders] = useLocalStorage("orders", []);
   const navigator = useNavigate();
-  const [myOrders, setMyOrders] = useState();
+  const [myOrders, setMyOrders] = useState([]);
   const [alert, setAlert] = useState({ show: false, message: "" });
   const { purchasedItems, addToCart, removeFromPurchasedItems } =
     useContext(CartContext);
 
   useEffect(() => {
-    if (!isLoggedIn) navigator("/login");
+    // Redirect to login if not logged in
+    if (!isLoggedIn) {
+      navigator("/login");
+      return;
+    }
 
-    setMyOrders([...orders.filter((order) => order.user === user)]);
-  }, [isLoggedIn, navigator, orders, user]);
+    // Filter orders only if user and orders are stable
+    if (user && orders.length > 0) {
+      const filteredOrders = orders.filter((order) => order.user === user);
+      setMyOrders(filteredOrders);
+    }
+  }, [isLoggedIn, navigator, orders, user]); // Ensure stability of dependencies
 
   const handleBuyItAgain = (item) => {
     addToCart(item);
@@ -34,11 +42,11 @@ const Dashboard = () => {
 
   const showAlert = (message) => {
     setAlert({ show: true, message });
-
     setTimeout(() => {
       setAlert({ show: false, message: "" });
     }, 2000);
   };
+
   useGSAP(() => {
     animateWithGsap("#hero", {
       y: -50,
@@ -47,6 +55,7 @@ const Dashboard = () => {
       duration: 1,
     });
   }, []);
+
   return (
     <section id='dashboard'>
       <div className='container relative z-2'>

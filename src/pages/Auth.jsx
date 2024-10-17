@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [users, setUsers] = useLocalStorage("users", []);
-  const [user, setUser] = useLocalStorage("user", []);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
   const [alert, setAlert] = useState({ show: false, message: "", type: "" });
   const [isLogin, setIsLogin] = useState(true); // To toggle between login and register
@@ -19,13 +18,14 @@ function Auth() {
     const data = e.target.elements;
     const email = data["email"].value;
     const password = data["password"].value;
+
     if (users.length > 0) {
       const userExists = users.filter(
         (user) => user.email === email && user.password === password
       );
+
       if (userExists.length) {
         setIsLoggedIn(true);
-        setUser(email);
         navigate("/shop");
       } else {
         setAlert({
@@ -50,6 +50,7 @@ function Auth() {
     const email = data["email"].value;
     const password1 = data["password1"].value;
     const password2 = data["password2"].value;
+
     if (password1 !== password2) {
       setAlert({
         show: true,
@@ -109,125 +110,124 @@ function Auth() {
       )}
       <div className='w-[400px] p-10 bg-black shadow-[0_0_10px_#0ef] rounded-xl'>
         {isLogin ? (
-          <>
-            <h2 className='text-3xl text-center text-white mb-8'>Login</h2>
-            <form id='login' method='POST' onSubmit={handleLogin}>
-              <div className='relative mb-6'>
-                <input
-                  type='email'
-                  name='email'
-                  autoComplete='email'
-                  placeholder='Enter email address'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='relative mb-6'>
-                <input
-                  type='password'
-                  name='password'
-                  autoComplete='current-password'
-                  placeholder='Enter password'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='remember'>
-                <label className='text-white text-sm'>
-                  <input className='accent-[#0ef]' type='checkbox' /> Remember
-                  me
-                </label>
-              </div>
-              <button
-                type='submit'
-                className='w-full h-12 bg-[#0ef] text-black font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-teal-400'
-              >
-                Login
-              </button>
-              <div className='signUp-link text-sm text-center mt-4'>
-                <p className='text-white'>
-                  Don't have an account?{" "}
-                  <span
-                    className='text-[#0ef] cursor-pointer'
-                    onClick={() => setIsLogin(false)}
-                  >
-                    Sign Up
-                  </span>
-                </p>
-              </div>
-            </form>
-          </>
+          <LoginForm handleLogin={handleLogin} setIsLogin={setIsLogin} />
         ) : (
-          <>
-            <h2 className='text-3xl text-center text-white mb-8'>Register</h2>
-            <form id='register' method='POST' onSubmit={handleRegister}>
-              <div className='relative mb-6'>
-                <input
-                  type='text'
-                  name='fullname'
-                  placeholder='Enter fullname'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='relative mb-6'>
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='Enter email address'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='relative mb-6'>
-                <input
-                  type='password'
-                  name='password1'
-                  autoComplete='new-password'
-                  placeholder='Enter password'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='relative mb-6'>
-                <input
-                  type='password'
-                  name='password2'
-                  autoComplete='new-password'
-                  placeholder='Confirm password'
-                  className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
-                  required
-                />
-              </div>
-              <div className='remember'>
-                <label className='text-white text-sm'>
-                  <input className='accent-[#0ef]' type='checkbox' /> I accept
-                  the terms and conditions.
-                </label>
-              </div>
-              <button
-                type='submit'
-                className='w-full h-12 bg-[#0ef] text-black font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-teal-400'
-              >
-                Sign Up
-              </button>
-              <div className='signUp-link text-sm text-center mt-4'>
-                <p className='text-white'>
-                  You have an account?{" "}
-                  <span
-                    className='text-[#0ef] cursor-pointer'
-                    onClick={() => setIsLogin(true)}
-                  >
-                    Sign In
-                  </span>
-                </p>
-              </div>
-            </form>
-          </>
+          <RegisterForm
+            handleRegister={handleRegister}
+            setIsLogin={setIsLogin}
+          />
         )}
       </div>
     </section>
   );
 }
+
+const LoginForm = ({ handleLogin, setIsLogin }) => (
+  <>
+    <h2 className='text-3xl text-center text-white mb-8'>Login</h2>
+    <form id='login' method='POST' onSubmit={handleLogin}>
+      <div className='relative mb-6'>
+        <input
+          type='email'
+          name='email'
+          autoComplete='email'
+          placeholder='Enter email address'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <div className='relative mb-6'>
+        <input
+          type='password'
+          name='password'
+          autoComplete='current-password'
+          placeholder='Enter password'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <button
+        type='submit'
+        className='w-full h-12 bg-[#0ef] text-black font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-teal-400'
+      >
+        Login
+      </button>
+      <div className='signUp-link text-sm text-center mt-4'>
+        <p className='text-white'>
+          Don't have an account?{" "}
+          <span
+            className='text-[#0ef] cursor-pointer'
+            onClick={() => setIsLogin(false)}
+          >
+            Sign Up
+          </span>
+        </p>
+      </div>
+    </form>
+  </>
+);
+
+const RegisterForm = ({ handleRegister, setIsLogin }) => (
+  <>
+    <h2 className='text-3xl text-center text-white mb-8'>Register</h2>
+    <form id='register' method='POST' onSubmit={handleRegister}>
+      <div className='relative mb-6'>
+        <input
+          type='text'
+          name='fullname'
+          placeholder='Enter fullname'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <div className='relative mb-6'>
+        <input
+          type='email'
+          name='email'
+          placeholder='Enter email address'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <div className='relative mb-6'>
+        <input
+          type='password'
+          name='password1'
+          autoComplete='new-password'
+          placeholder='Enter password'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <div className='relative mb-6'>
+        <input
+          type='password'
+          name='password2'
+          autoComplete='new-password'
+          placeholder='Confirm password'
+          className='w-full h-12 text-lg text-white bg-transparent border-b-2 border-gray-300 outline-none placeholder-gray-500 px-4 focus:border-[#0ef]'
+          required
+        />
+      </div>
+      <button
+        type='submit'
+        className='w-full h-12 bg-[#0ef] text-black font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-teal-400'
+      >
+        Sign Up
+      </button>
+      <div className='signUp-link text-sm text-center mt-4'>
+        <p className='text-white'>
+          You have an account?{" "}
+          <span
+            className='text-[#0ef] cursor-pointer'
+            onClick={() => setIsLogin(true)}
+          >
+            Sign In
+          </span>
+        </p>
+      </div>
+    </form>
+  </>
+);
 
 export default Auth;
