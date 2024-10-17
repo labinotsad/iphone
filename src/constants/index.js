@@ -260,8 +260,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: iPhoneX,
-    image:
-      "https://m.media-amazon.com/images/I/51IqCbXa97L._AC_UY327_FMwebp_QL65_.jpg",
+    image: iPhoneX,
     price: " 217.00",
   },
   {
@@ -272,8 +271,7 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: iPhoneXs,
-    image:
-      "https://m.media-amazon.com/images/I/512F7mwDVyL._AC_UY327_FMwebp_QL65_.jpg",
+    image: iPhoneXs,
     price: " 237.00",
   },
   {
@@ -284,8 +282,8 @@ export const benefits1 = [
     backgroundUrl: "./src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: iPhoneXsMax,
-    image:
-      "https://m.media-amazon.com/images/I/61UojnxVbPL._AC_UY327_FMwebp_QL65_.jpg",
+    image: iPhoneXsMax,
+
     price: " 280.00",
   },
   {
@@ -299,7 +297,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "2,550.00",
+    price: " 2550.00",
   },
   {
     id: "22",
@@ -312,7 +310,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "2,150.00",
+    price: " 2150.00",
   },
   {
     id: "23",
@@ -325,7 +323,7 @@ export const benefits1 = [
     imageUrl: MacBookAir15,
     image:
       "https://m.media-amazon.com/images/I/71O14N5GYLL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "1,350.00",
+    price: " 1350.00",
   },
   {
     id: "24",
@@ -338,7 +336,7 @@ export const benefits1 = [
     imageUrl: MacBookAir13,
     image:
       "https://m.media-amazon.com/images/I/71uJwr1IrZL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "999.00",
+    price: " 999.00",
   },
   {
     id: "25",
@@ -351,7 +349,7 @@ export const benefits1 = [
     imageUrl: MacBookPro16,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "2,550.00",
+    price: " 2550.00",
   },
   {
     id: "26",
@@ -364,7 +362,7 @@ export const benefits1 = [
     imageUrl: MacBookPro14,
     image:
       "https://m.media-amazon.com/images/I/6195U0WuDkL._AC_UY327_FMwebp_QL65_.jpg",
-    price: "2,550.00",
+    price: " 2550.00",
   },
 ];
 

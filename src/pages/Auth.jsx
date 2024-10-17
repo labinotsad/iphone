@@ -6,7 +6,7 @@ function Auth() {
   const [users, setUsers] = useLocalStorage("users", []);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isloggedin", false);
   const [alert, setAlert] = useState({ show: false, message: "", type: "" });
-  const [isLogin, setIsLogin] = useState(true); // To toggle between login and register
+  const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function Auth() {
 
       if (userExists.length) {
         setIsLoggedIn(true);
-        // Set user data in local storage
+
         localStorage.setItem(
           "user",
           JSON.stringify({
@@ -80,9 +80,8 @@ function Auth() {
           type: "success",
           message: "Account created successfully.",
         });
-        // Set user data in local storage
+
         localStorage.setItem("user", JSON.stringify({ name: fullname, email }));
-        // Navigate to login after 2 seconds
         setTimeout(() => {
           setIsLogin(true);
           setAlert({ show: false, type: "", message: "" });
@@ -97,7 +96,6 @@ function Auth() {
 
   return (
     <section className='min-h-screen flex justify-center items-center bg-black relative'>
-      {/* Alert Modal */}
       {alert.show && (
         <div className='fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50'>
           <div className='w-[400px] p-6 bg-white shadow-lg rounded-lg relative'>

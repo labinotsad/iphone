@@ -55,14 +55,14 @@ const Cart = () => {
     setShowForm(false);
     setTimeout(() => {
       navigate("/dashboard");
-    }, 2000);
+    }, 1000);
   };
 
   const showAlert = (message) => {
     setAlert({ show: true, message });
     setTimeout(() => {
       setAlert({ show: false, message: "" });
-    }, 2000);
+    }, 1000);
   };
 
   useGSAP(() => {

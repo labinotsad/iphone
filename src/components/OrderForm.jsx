@@ -10,20 +10,31 @@ const OrderForm = ({ selectedItem, onSubmit, closeForm }) => {
   });
 
   useEffect(() => {
+    // Retrieve user info from localStorage
     try {
-      // Retrieve user data from local storage
-      const user = JSON.parse(localStorage.getItem("user")); // Assuming user is saved as an object
+      const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
         setFormData((prevData) => ({
           ...prevData,
-          name: user.name || "", // Set the name if it exists
-          email: user.email || "", // Set the email if it exists
+          name: user.name || "",
+          email: user.email || "",
         }));
       }
     } catch (error) {
       console.error("Failed to retrieve user data:", error);
     }
-  }, []); // Run this effect only once when the component mounts
+
+    // Automatically set current date and time
+    const now = new Date();
+    const currentDate = now.toISOString().split("T")[0]; // YYYY-MM-DD format
+    const currentTime = now.toTimeString().split(" ")[0].slice(0, 5); // HH:MM format
+
+    setFormData((prevData) => ({
+      ...prevData,
+      date: currentDate,
+      time: currentTime,
+    }));
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

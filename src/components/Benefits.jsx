@@ -36,7 +36,7 @@ const Benefits = () => {
     setAlert({ show: true, message });
     setTimeout(() => {
       setAlert({ show: false, message: "" });
-    }, 2000);
+    }, 1000);
   };
 
   return (
