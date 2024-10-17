@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const OrderForm = ({ selectedItem, onSubmit, closeForm }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,22 @@ const OrderForm = ({ selectedItem, onSubmit, closeForm }) => {
     date: "",
     time: "",
   });
+
+  useEffect(() => {
+    try {
+      // Retrieve user data from local storage
+      const user = JSON.parse(localStorage.getItem("user")); // Assuming user is saved as an object
+      if (user) {
+        setFormData((prevData) => ({
+          ...prevData,
+          name: user.name || "", // Set the name if it exists
+          email: user.email || "", // Set the email if it exists
+        }));
+      }
+    } catch (error) {
+      console.error("Failed to retrieve user data:", error);
+    }
+  }, []); // Run this effect only once when the component mounts
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -26,6 +26,14 @@ function Auth() {
 
       if (userExists.length) {
         setIsLoggedIn(true);
+        // Set user data in local storage
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            name: userExists[0].fullname,
+            email: userExists[0].email,
+          })
+        );
         navigate("/shop");
       } else {
         setAlert({
@@ -72,6 +80,8 @@ function Auth() {
           type: "success",
           message: "Account created successfully.",
         });
+        // Set user data in local storage
+        localStorage.setItem("user", JSON.stringify({ name: fullname, email }));
         // Navigate to login after 2 seconds
         setTimeout(() => {
           setIsLogin(true);
