@@ -53,7 +53,7 @@ const Benefits = () => {
         <h3 id='hero' className='h3 mt-10 text-center mb-10 opacity-0'>
           Explore the models.
         </h3>
-        <div className='flex flex-wrap gap-10 mb-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10'>
           {benefits1.slice(0, 6).map((item) => (
             <div
               className='block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]'
